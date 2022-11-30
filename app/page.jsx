@@ -1,57 +1,54 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+
+import { React, useRef, useEffect } from 'react';
+import Image from 'next/image';
+import styles from './page.module.css';
+import Card from '../components/card';
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
-        </h1>
+	const element1 = useRef(null);
+	const element2 = useRef(null);
+	const element3 = useRef(null);
+	let element4 = useRef();
+	let element5 = useRef();
+	let element6 = useRef();
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
+	useEffect(() => {}, []);
 
-        <div className={styles.grid}>
-          <a href="https://beta.nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js 13</p>
-          </a>
+	return (
+		<div
+			className="cards"
+			onMouseMove={(e) => {
+				let rect1, rect2, rect3;
+				if (!element1.current) return;
+				else rect1 = element1.current.getBoundingClientRect();
+				if (!element2.current) return;
+				else rect2 = element2.current.getBoundingClientRect();
+				if (!element3.current) return;
+				else rect3 = element3.current.getBoundingClientRect();
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Explore the Next.js 13 playground.</p>
-          </a>
+				let x1 = e.clientX - rect1.left,
+					y1 = e.clientY - rect1.top;
 
-          <a
-            href="https://vercel.com/templates/next.js/app-directory?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>Deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
-        </div>
-      </main>
+				element1.current.style.setProperty('--mouse-x', `${x1}px`);
+				element1.current.style.setProperty('--mouse-y', `${y1}px`);
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
-  )
+				let x2 = e.clientX - rect2.left,
+					y2 = e.clientY - rect2.top;
+
+				element2.current.style.setProperty('--mouse-x', `${x2}px`);
+				element2.current.style.setProperty('--mouse-y', `${y2}px`);
+
+				let x3 = e.clientX - rect3.left,
+					y3 = e.clientY - rect3.top;
+
+				element3.current.style.setProperty('--mouse-x', `${x3}px`);
+				element3.current.style.setProperty('--mouse-y', `${y3}px`);
+			}}
+		>
+			<Card ref={element1}></Card>
+			<Card ref={element2}></Card>
+			<Card ref={element3}></Card>
+		</div>
+	);
 }
