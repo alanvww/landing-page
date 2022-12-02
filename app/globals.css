@@ -1,10 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&family=Zen+Dots&display=swap');
 :root {
 	--bg-color: rgb(20, 20, 20);
 
 	--card-color: rgb(23, 23, 23);
 }
 
-html,
+html {
+	background: linear-gradient(
+		90deg,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(82, 9, 121, 0.6727284663865547) 0%,
+		rgba(255, 0, 26, 0.7315519957983193) 100%
+	);
+}
+
 body {
 	align-items: center;
 	background-color: var(--bg-color);
@@ -31,7 +40,7 @@ a {
 	}
 	body {
 		color: white;
-		background: black;
+		background: rgba(0, 0, 0, 0.784);
 	}
 }
 
@@ -107,15 +116,22 @@ a {
 
 /* -- ↓ ↓ ↓ extra card content styles ↓ ↓ ↓ -- */
 
+.headLine {
+	font-family: 'Zen Dots', cursive;
+	font-size: 3em;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
 h1,
 h2,
 h3,
 h4,
 span {
 	color: rgb(240, 240, 240);
-	font-family: 'Rubik', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
-	margin: 0px;
+	margin: 20px;
 }
 
 i {
@@ -123,16 +139,20 @@ i {
 }
 
 .card-image {
+	position: relative;
 	align-items: center;
 	display: flex;
-	height: 140px;
+	width: 80px;
+	margin: auto;
+	margin-top: 10px;
 	justify-content: center;
 	overflow: hidden;
+	opacity: 0.8;
 }
 
-.card-image > i {
-	font-size: 6em;
-	opacity: 0.25;
+.card-image > .logo {
+	object-fit: fill;
+	filter: invert(100%);
 }
 
 .card-info-wrapper {
@@ -146,7 +166,7 @@ i {
 .card-info {
 	align-items: flex-start;
 	display: flex;
-	gap: 10px;
+	gap: 6px;
 }
 
 .card-info > i {
@@ -157,13 +177,13 @@ i {
 
 .card-info-title > h3 {
 	font-size: 1.1em;
-	line-height: 20px;
+	line-height: 15px;
 }
 
 .card-info-title > h4 {
 	color: rgba(255, 255, 255, 0.5);
 	font-size: 0.85em;
-	margin-top: 8px;
+	margin-top: 4px;
 }
 
 /* -- ↓ ↓ ↓ some responsiveness ↓ ↓ ↓ -- */
@@ -174,20 +194,26 @@ i {
 		overflow: auto;
 	}
 
-	#cards {
+	.cards {
 		max-width: 1000px;
-		padding: 10px 0px;
+		gap: 10px;
 	}
 
 	.card {
-		flex-shrink: 1;
-		width: calc(50% - 4px);
+		flex-shrink: 0;
+		width: calc(100% - 4px);
 	}
 }
 
 @media (max-width: 500px) {
+	.headLine {
+		font-size: 2em;
+		margin: 1rem;
+	}
+
 	.card {
 		height: 180px;
+		width: calc(100% - 10px);
 	}
 
 	.card-image {
@@ -217,7 +243,15 @@ i {
 }
 
 @media (max-width: 320px) {
+	.cards {
+		gap: 5px;
+		margin: auto;
+	}
 	.card {
-		width: 100%;
+		margin: auto;
+		width: 96%;
+	}
+	.card-image {
+		scale: 0.9;
 	}
 }

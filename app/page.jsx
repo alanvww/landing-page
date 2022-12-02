@@ -14,13 +14,12 @@ export default function Home() {
 		return (
 			<div ref={ref} className="card">
 				<div className="card-content">
-					<div className="card-image">
-						<div className="card-info-wrapper">
-							<div className="card-info">
-								<div className="card-info-title">
-									<h3>{props.name}</h3>
-									<h4>{props.link}</h4>
-								</div>
+					<div className="card-image"></div>
+					<div className="card-info-wrapper">
+						<div className="card-info">
+							<div className="card-info-title">
+								<h3>{props.name}</h3>
+								<h4>{props.link}</h4>
 							</div>
 						</div>
 					</div>
@@ -72,10 +71,33 @@ export default function Home() {
 	};
 
 	return (
-		<div className="cards" onMouseMove={mouseCardEffect}>
-			<Card name={links[0].name} link={links[0].link} ref={element1}></Card>
-			<Card ref={element2}></Card>
-			<Card ref={element3}></Card>
-		</div>
+		<>
+			<h1 className="headLine">{`Alan's Links`}</h1>
+			<div className="cards" onMouseMove={mouseCardEffect}>
+				<Card name={links[0].name} link={links[0].link} ref={element1}></Card>
+				<div ref={element2} className="card">
+					<div className="card-content">
+						<div className="card-image">
+							<Image
+								className="logo"
+								src={'/linkedin-in.svg'}
+								alt="Picture of the author"
+								layout="fill"
+							/>
+						</div>
+
+						<div className="card-info-wrapper">
+							<div className="card-info">
+								<div className="card-info-title">
+									<h3>LinkedIn</h3>
+									<h4>{`Alan's LinkedIn`}</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<Card ref={element3}></Card>
+			</div>
+		</>
 	);
 }
